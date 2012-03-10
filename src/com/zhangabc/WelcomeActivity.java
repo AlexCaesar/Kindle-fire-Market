@@ -1,12 +1,14 @@
-package com.kindle.fire;
+package com.zhangabc;
 
 import android.app.Activity;
 import android.os.Bundle;
 
-public class KindleActivity extends Activity {
+public class WelcomeActivity extends Activity
+{
     /** Called when the activity is first created. */
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
     }

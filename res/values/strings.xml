@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<<<<<<< HEAD
 
     <string name="hello">Hello World, KindleActivity!</string>
     <string name="app_name">92Kindle</string>
 
 </resources>
+=======
+    <string name="app_name">WelcomeActivity</string>
+</resources>
+>>>>>>> zhanger

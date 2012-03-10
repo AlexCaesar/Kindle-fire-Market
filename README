@@ -1,1 +1,26 @@
-aaaaa
+
+
+## vi .gitignore and add:
+
+    bin/*
+    .gitignore
+    .classpath
+    .project
+    gen/*
+
+
+## CREATE PROJECT 
+
+    android create project \
+        --package com.zhangabc \
+        --activity WelcomeActivity \
+        --target 3 \
+        --path .
+
+
+## BUILD & DEBUG PROJECT 
+
+    ant debug
+    adb uninstall com.zhangabc.kindlefireMarket
+    adb -s emulator-5554 install bin/xxxx.apk
+
