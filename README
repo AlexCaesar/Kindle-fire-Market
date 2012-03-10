@@ -11,6 +11,7 @@
     .classpath
     .project
     gen/*
+	.settings/*
 
 
 ## CREATE PROJECT 
