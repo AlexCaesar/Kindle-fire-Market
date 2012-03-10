@@ -7,7 +7,7 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.Toast;
 
 /**
- * ╧Ж╤╞жаап╠М╣в╡©ё╛╤ах║обр╩рЁйЩ╬щ
+ * Ф╩ Е┼╗Х┤ЁЕ┬≈Х║╗Е╨∙И┐╗О╪▄Х╞╩Е▐√Д╦▀Д╦─И║╣Ф∙╟Ф█╝
  */
 public class AutoLoadListener implements OnScrollListener {
 	public interface AutoLoadCallBack {
@@ -29,28 +29,28 @@ public class AutoLoadListener implements OnScrollListener {
 	@Override
 	public void onScrollStateChanged(AbsListView view, int scrollState) {
 		if (scrollState == OnScrollListener.SCROLL_STATE_IDLE) {
-			// ╧Ж╤╞╣╫╣в╡©
+			// Ф╩ Е┼╗Е┬╟Е╨∙И┐╗
 			if (view.getLastVisiblePosition() == (view.getCount() - 1)) {
 				View v = (View) view.getChildAt(view.getChildCount() - 1);
 				int[] location = new int[2];
-				v.getLocationOnScreen(location);// ╩Ях║тзуШ╦Жфад╩дз╣д╬Ь╤твЬ╠Й
+				v.getLocationOnScreen(location);// Х▌╥Е▐√Е°╗Ф∙╢Д╦╙Е╠▐Е╧∙Е├┘Г └Г╩²Е╞╧Е²░Ф═┤
 				int y = location[1];
 
 				Log.e("x" + location[0], "y" + location[1]);
 				
 				if (view.getLastVisiblePosition() != getLastVisiblePosition && lastVisiblePositionY != y) {
-					// ╣зр╩╢нможа╣в╡©
-					Toast.makeText(view.getContext(), "ты╢нможа╣в╡©ё╛╪╢©и╥╜рЁ", 500).show();
+					// Г╛╛Д╦─Ф╛║Ф▀√Х┤ЁЕ╨∙И┐╗
+					Toast.makeText(view.getContext(), "Е├█Ф╛║Ф▀√Х┤ЁЕ╨∙И┐╗О╪▄Е█ЁЕ▐╞Г©╩И║╣", 500).show();
 					getLastVisiblePosition = view.getLastVisiblePosition();
 					lastVisiblePositionY = y;
 					return;
 				} else if (view.getLastVisiblePosition() == getLastVisiblePosition && lastVisiblePositionY == y) {
-					// ╣з╤Ч╢нможа╣в╡©
-					mCallback.execute(">>>>>можа╣в╡©");
+					// Г╛╛Д╨▄Ф╛║Ф▀√Х┤ЁЕ╨∙И┐╗
+					mCallback.execute(">>>>>Ф▀√Х┤ЁЕ╨∙И┐╗");
 				}
 			}
 
-			// н╢╧Ж╤╞╣╫╣в╡©ё╛╣з╤Ч╢нможа╣в╡©╤╪ЁУй╪╩╞
+			// Ф°╙Ф╩ Е┼╗Е┬╟Е╨∙И┐╗О╪▄Г╛╛Д╨▄Ф╛║Ф▀√Х┤ЁЕ╨∙И┐╗И┐╫Е┬²Е╖▀Е▄√
 			getLastVisiblePosition = 0;
 			lastVisiblePositionY = 0;
 		}

@@ -27,15 +27,15 @@ public class KindleActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		/** È«ÆÁÉèÖÃ£¬Òş²Ø´°¿ÚËùÓĞ×°ÊÎ */
+		/** å…¨å±è®¾ç½®ï¼Œéšè—çª—å£æ‰€æœ‰è£…é¥° */
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		/** ±êÌâÊÇÊôÓÚViewµÄ£¬ËùÒÔ´°¿ÚËùÓĞµÄĞŞÊÎ²¿·Ö±»Òş²Øºó±êÌâÒÀÈ»ÓĞĞ§ */
+		/** æ ‡é¢˜æ˜¯å±äºViewçš„ï¼Œæ‰€ä»¥çª—å£æ‰€æœ‰çš„ä¿®é¥°éƒ¨åˆ†è¢«éšè—åæ ‡é¢˜ä¾ç„¶æœ‰æ•ˆ */
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.relativemain);
 		setTitle("");
 
-		/** Ò»¼¶·ÖÀà */
+		/** ä¸€çº§åˆ†ç±» */
 		final ImageButton ibgame = (ImageButton) findViewById(R.id.btngame);
 		final ImageButton ibapp = (ImageButton) findViewById(R.id.btnapp);
 		final ImageButton ibneed = (ImageButton) findViewById(R.id.btnneed);
@@ -72,7 +72,7 @@ public class KindleActivity extends Activity {
 			}
 		});
 
-		/** ¶ş¼¶·ÖÀà */
+		/** äºŒçº§åˆ†ç±» */
 		List<Map<String, String>> data = new ArrayList<Map<String, String>>();
 		for (int i = 0; i < 10; i++) {
 			Map<String, String> m = new HashMap<String, String>();
@@ -89,7 +89,7 @@ public class KindleActivity extends Activity {
 		lv.setAdapter(sa);
 		lv.setOnItemClickListener(new MenuItemClickListener());
 
-		/** Ó¦ÓÃÁĞ±í */
+		/** åº”ç”¨åˆ—è¡¨ */
 		GridView gv = (GridView) findViewById(R.id.gv);
 		List<Map<String, String>> gvdata = new ArrayList<Map<String, String>>();
 		for (int i = 1; i < 8; i++) {
@@ -99,14 +99,6 @@ public class KindleActivity extends Activity {
 			gvdata.add(m);
 		}
 		gvdata.clear();
-		/*
-		 * try { TextView tv = (TextView) findViewById(R.id.textV);
-		 * tv.setText(new
-		 * HttpConn().httpGet("http://www.zhangabc.com/rest.php")); } catch
-		 * (Exception e) { Toast.makeText(KindleActivity.this,
-		 * e.getMessage().toString(), Toast.LENGTH_LONG).show();
-		 * e.printStackTrace(); }
-		 */
 		SimpleAdapter gvsa = new SimpleAdapter(this, gvdata, R.layout.appitem,
 				new String[] { "key", "value", "value" }, new int[] {
 						R.id.ItemImage, R.id.ItemText, R.id.ItemText2 });
@@ -132,7 +124,7 @@ public class KindleActivity extends Activity {
 		}
 	};
 
-	// µ±AdapterView±»µ¥»÷(´¥ÃşÆÁ»òÕß¼üÅÌ)£¬Ôò·µ»ØµÄItemµ¥»÷ÊÂ¼ş
+	// å½“AdapterViewè¢«å•å‡»(è§¦æ‘¸å±æˆ–è€…é”®ç›˜)ï¼Œåˆ™è¿”å›çš„Itemå•å‡»äº‹ä»¶
 	class MenuItemClickListener implements OnItemClickListener {
 		public void onItemClick(AdapterView<?> o0, View o1, int o2, long o3) {
 			Map<?, ?> item = (Map<?, ?>) o0.getItemAtPosition(o2);
