@@ -11,19 +11,10 @@
         android:layout_marginBottom="27dp"
         android:layout_marginLeft="22dp"
         android:layout_marginTop="85dp"
-        android:cacheColorHint="#000000"
+        android:cacheColorHint="#00000000"
         android:divider="#00000000"
         android:scrollbars="none" >
     </ListView>
-
-    <!--
-         <Gallery
-        android:id="@+id/menuBar"
-        android:layout_width="fill_parent"
-        android:layout_height="49dp"
-        android:gravity="center_vertical"
-        android:spacing="16dp" />
-    -->
 
     <GridView
         android:id="@+id/gv"
@@ -34,24 +25,6 @@
         android:layout_toRightOf="@+id/menu"
         android:numColumns="2" >
     </GridView>
-
-    <!--
-         <TextView
-        android:id="@+id/textV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/gv"
-        android:layout_marginLeft="158dp"
-        android:layout_toRightOf="@+id/gv" />
-    <GridView
-        android:id="@+id/menuBar"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_alignLeft="@+id/gv"
-        android:layout_alignParentTop="true"
-        android:stretchMode="columnWidth" >
-    </GridView>
-    -->
 
     <ImageButton
         android:id="@+id/btngame"
@@ -84,17 +57,5 @@
         android:layout_alignTop="@+id/btnneed"
         android:layout_toRightOf="@+id/btnneed"
         android:background="@drawable/top_other" />
-
-    <!--
-    android:background="@drawable/top_other" />
-    <ListView
-        android:id="@+id/menuBar"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_alignLeft="@+id/gv"
-        android:layout_alignParentTop="true"
-        android:divider="#00000000" >
-    </ListView>
-    -->
 
 </RelativeLayout>

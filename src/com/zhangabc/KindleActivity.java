@@ -24,6 +24,8 @@ import android.widget.Toast;
 import com.zhangabc.AutoLoadListener.AutoLoadCallBack;
 
 public class KindleActivity extends Activity {
+	private String[] subClass;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,7 +35,8 @@ public class KindleActivity extends Activity {
 		/** 标题是属于View的，所以窗口所有的修饰部分被隐藏后标题依然有效 */
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.relativemain);
-		setTitle("");
+		setTitle(R.string.app_name);
+		final ListView lv = (ListView) findViewById(R.id.menu);
 
 		/** 一级分类 */
 		final ImageButton ibgame = (ImageButton) findViewById(R.id.btngame);
@@ -41,53 +44,35 @@ public class KindleActivity extends Activity {
 		final ImageButton ibneed = (ImageButton) findViewById(R.id.btnneed);
 		final ImageButton ibother = (ImageButton) findViewById(R.id.btnother);
 		final View[] btns = new View[] { ibgame, ibapp, ibneed, ibother };
+		final String[] btnNames = new String[] { "游戏", "应用", "装机必备", "其他" };
 		final int[] res = new int[] { R.drawable.top_game, R.drawable.top_app,
 				R.drawable.top_need, R.drawable.top_other };
-		ibgame.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				changeBackGround(btns, res);
-				ibgame.setBackgroundResource(R.drawable.top_game_selected);
-			}
-		});
-		ibapp.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				changeBackGround(btns, res);
-				ibapp.setBackgroundResource(R.drawable.top_app_selected);
-			}
-		});
-		ibneed.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				changeBackGround(btns, res);
-				ibneed.setBackgroundResource(R.drawable.top_need_selected);
-			}
-		});
-		ibother.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				changeBackGround(btns, res);
-				ibother.setBackgroundResource(R.drawable.top_other_selected);
-			}
-		});
+		final int[] resSelected = new int[] { R.drawable.top_game_selected,
+				R.drawable.top_app_selected, R.drawable.top_need_selected,
+				R.drawable.top_other_selected };
+		for (int i = 0; i < btns.length; i++) {
+			final int index = i;
+			btns[i].setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					changeBackGround(btns, res);
+					v.setBackgroundResource(resSelected[index]);
+					subClass = AppClass.getClassByParentName(btnNames[index]);
+					reloadListView(lv, subClass);
+
+				}
+			});
+		}
 
 		/** 二级分类 */
 		List<Map<String, String>> data = new ArrayList<Map<String, String>>();
-		for (int i = 0; i < 10; i++) {
-			Map<String, String> m = new HashMap<String, String>();
-			m.put("key", "key" + i);
-			m.put("value", "value" + i);
-			data.add(m);
-		}
-
+		Map<String, String> dm = new HashMap<String, String>();
+		dm.put("key", "All");
+		data.add(dm);
+		
 		SimpleAdapter sa = new SimpleAdapter(this, data, R.layout.listitem,
-				new String[] { "key", "value" }, new int[] { R.id.key,
-						R.id.value });
-
-		ListView lv = (ListView) findViewById(R.id.menu);
+				new String[] { "key" }, new int[] { R.id.key });
 		lv.setAdapter(sa);
-		lv.setOnItemClickListener(new MenuItemClickListener());
 
 		/** 应用列表 */
 		GridView gv = (GridView) findViewById(R.id.gv);
@@ -106,6 +91,20 @@ public class KindleActivity extends Activity {
 		gv.setOnScrollListener(autoLoadListener);
 		gv.setAdapter(gvsa);
 		gv.setOnItemClickListener(new MenuItemClickListener());
+	}
+
+	public void reloadListView(ListView lv, String[] clas) {
+		List<Map<String, String>> data = new ArrayList<Map<String, String>>();
+		if (clas != null && clas.length > 0) {
+			for (int i = 0; i < clas.length; i++) {
+				Map<String, String> m = new HashMap<String, String>();
+				m.put("key", clas[i]);
+				data.add(m);
+			}
+		}
+		SimpleAdapter sa = new SimpleAdapter(this, data, R.layout.listitem,
+				new String[] { "key" }, new int[] { R.id.key });
+		lv.setAdapter(sa);
 	}
 
 	public int getResId(String key) {
