@@ -47,28 +47,28 @@ public class KindleActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				changeBackGround(btns, res);
-				ibgame.setBackgroundResource(R.drawable.top_game_check);
+				ibgame.setBackgroundResource(R.drawable.top_game_selected);
 			}
 		});
 		ibapp.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				changeBackGround(btns, res);
-				ibapp.setBackgroundResource(R.drawable.top_app_check);
+				ibapp.setBackgroundResource(R.drawable.top_app_selected);
 			}
 		});
 		ibneed.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				changeBackGround(btns, res);
-				ibneed.setBackgroundResource(R.drawable.top_need_check);
+				ibneed.setBackgroundResource(R.drawable.top_need_selected);
 			}
 		});
 		ibother.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				changeBackGround(btns, res);
-				ibother.setBackgroundResource(R.drawable.top_other_check);
+				ibother.setBackgroundResource(R.drawable.top_other_selected);
 			}
 		});
 
