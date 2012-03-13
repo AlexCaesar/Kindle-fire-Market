@@ -1,33 +1,3 @@
 
-
-## vi project.properties :
-
-    
-
-## vi .gitignore and add:
-
-    bin/*
-    .gitignore
-    .classpath
-    .project
-    gen/*
-    .settings/*
-
-
-## CREATE PROJECT 
-
-    android create project \
-        --package com.zhangabc \
-        --activity WelcomeActivity \
-        --target 3 \
-        --path .
-
-
-## BUILD & DEBUG PROJECT 
-
-adb uninstall com.zhangabc
-rm -rf bin/*
-ant debug
-adb -s emulator-5554 install bin/WelcomeActivity-debug.apk
-adb shell "am start -n com.zhangabc/com.zhangabc.WelcomeActivity"
+虽然是做着玩，但因为人家要用，不再开源了，停更。
 
